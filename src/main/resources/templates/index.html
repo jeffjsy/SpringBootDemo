@@ -121,11 +121,12 @@
             <div class="line-container">
 	            <div>
 	                <label for="checkInDate">Check-in Date:</label>
-	                <input type="date" id="checkInDate" name="checkInDate" required>
+	                <input type="date" id="checkInDate" name="checkInDate" required/>	                
 	            </div>
 	            <div>
 	                <label for="checkOutDate">Check-out Date:</label>
-	                <input type="date" id="checkOutDate" name="checkOutDate" required>
+	                <input type="date" id="checkOutDate" name="checkOutDate" required/>
+	                
 	            </div>
             </div>
             <label for="viewType">Room types and Price</label>
@@ -174,7 +175,10 @@
 	                <input type="radio" id="payPal" name="paymentType" value="Paypal" >
 	                <label for="payPal">Paypal</label>
 	            </div>
-            </div> 
+            </div>
+            <div th:if="${error}" class="error-message">
+    			<span th:text="${error}"></span>
+			</div> 
             <div>
                 <button type="submit">Submit</button>
                 <button type="reset">Clear Form</button>
