@@ -39,22 +39,51 @@ public class ReservationController {
 			double totalCost = reservation.CalculateTotalCost(checkInDate, checkOutDate, reservation.getViewType());
 
 			// Output details of reservation
-			String output = "Welcome " + reservation.getFname() + "<br><br>" +
-					"Name: " + reservation.getFname() + " " + reservation.getLname() + "<br>" +
-					"Phone: " + reservation.getPhone() + "<br>" +
-					"Email: " + reservation.getEmail() + "<br>" +
-					"Address: " + reservation.getAddress() + ", " +					
-					reservation.getCity() + ", " +
-					reservation.getPostal() + ", " +
-					reservation.getProvince() + "<br><br>" +
-					"Accommodations:<br>" +
-					"Check-in Date: " + reservation.getCheckInDate() + "<br>" +
-					"Check-out Date: " + reservation.getCheckOutDate() + "<br>" +
-					"Number of Nights: " + reservation.CalculateNumNights(checkInDate, checkOutDate) + "<br>" +
-					"Room Type: " + reservation.getViewType() + "<br>" +					 
-					"Guests: " + reservation.getNumAdults() + " adults, "+ reservation.getNumChildren() + " children" + "<br><br>" +
-					"Payment Method: " + reservation.getPaymentType() + "<br><br><br>" +
-					"Total Cost: " + totalCost;
+			String output = "<div class=\"reservation-details\">" +
+                    "<table>" +
+                    "<tr>" +
+                    "<th colspan=\"2\">Customer Details</th>" +
+                    "<th colspan=\"2\">Accommodation Details</th>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>Name:</td>" +
+                    "<td>" + reservation.getFname() + " " + reservation.getLname() + "</td>" +
+                    "<td>Check-in Date:</td>" +
+                    "<td>" + reservation.getCheckInDate() + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>Phone:</td>" +
+                    "<td>" + reservation.getPhone() + "</td>" +
+                    "<td>Check-out Date:</td>" +
+                    "<td>" + reservation.getCheckOutDate() + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>Email:</td>" +
+                    "<td>" + reservation.getEmail() + "</td>" +
+                    "<td>Number of Nights:</td>" +
+                    "<td>" + reservation.CalculateNumNights(checkInDate, checkOutDate) + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>Address:</td>" +
+                    "<td>" + reservation.getAddress() + ", " +
+                    reservation.getCity() + ", " +
+                    reservation.getPostal() + ", " +
+                    reservation.getProvince() + "</td>" +
+                    "<td>Room Type:</td>" +
+                    "<td>" + reservation.getViewType() + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td></td>" +
+                    "<td></td>" +
+                    "<td>Guests:</td>" +
+                    "<td>" + reservation.getNumAdults() + " adults, " + reservation.getNumChildren() + " children</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    "<br><br>" +
+                    "<p>Payment Method: " + reservation.getPaymentType() + "</p>" +
+                    "<br><br><br>" +
+                    "<p>Total Cost: " + totalCost + "</p>" +
+                "</div>";
 
 			model.addAttribute("output", output);
 			return "show-details";
